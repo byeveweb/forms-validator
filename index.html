@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios en HTML y JavaScript</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Formulario Registro</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <div class="row p-5 justify-content-center">
+            <div class="col-8 text-center ">
+                <h1>Sign Up</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center ">
+            <div class="col-md-6 justify-content-center">
+
+                <!--Sign Up Form-->
+                <form id="signup">
+
+                    <!--Username-->
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+                        <!-- <small id="emailHelp" class="form-text text-muted">El usuario no puede ser menor de 6
+                            caracteres</small> -->
+                    </div>
+
+                    <!--Email-->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+
+                    <!--Password-->
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+
+                    <!--Password Confirm-->
+                    <div class="mb-3">
+                        <label for="passwordconfirm" class="form-label">Password Confirm</label>
+                        <input type="password" name="passwordconfirm" class="form-control" id="passwordconfirm" placeholder="Password Confirm">
+                    </div>
+
+                    <!--Check Policity & Terms-->
+                    <div class="mb-3 ml-4">
+                        <input type="checkbox" class="form-check-input" id="checkpolicity" name="checkpolicity">
+                        <label for="checkpolicity" class="form-label">Accept Terms and Conditions</label>
+                    </div>
+
+
+                    <!--Button Submit-->
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-green p-3" id="enviar" disabled>Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+
+    </footer>
+    <script src="js/app.js" type="module"></script>
+
+</body>
+
+</html>
