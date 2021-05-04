@@ -1,6 +1,10 @@
 import { UI } from './modules/ui.js'
+import { InputValidator } from './modules/inputValidator.js'
+
 
 const ui = new UI()
+const inputValidatorClass = new InputValidator()
+
 
 
 //Variables
@@ -61,7 +65,8 @@ function inputValidator(e, r, o) {
 
     let error = document.querySelector(`input[name="${e.name}"]`).nextSibling
 
-    //Entra si está vacio, no deja grabar en el objeto
+
+
     if (e.value === '') {
 
         error.remove()
@@ -73,7 +78,6 @@ function inputValidator(e, r, o) {
     }
 
 
-    //Entra si es campo es passwordconfirm, si es ok, graba en el objeto
     if (e.name === 'passwordconfirm') {
         if (e.value === o.password) {
             dataInsertObj(e)
@@ -84,7 +88,6 @@ function inputValidator(e, r, o) {
         }
     }
 
-    //Entra si no otros campos y grababa en el objeto en caso de ok.
     if (r.test(e.value)) {
         dataInsertObj(e)
         console.log('3. imprimir en verde', e.value)
@@ -99,8 +102,6 @@ function inputValidator(e, r, o) {
 
 
 
-
-    //Entra si no algún campo de objeto está vacio
     const formComplete = Object.values(o).every(el => el != '')
     if (formComplete) {
         button.disabled = false
