@@ -3,6 +3,7 @@ import { UI } from './ui.js'
 export class InputValidator {
 
     constructor(alertError, eventTargetType, eventTargetName, eventTargetValue, eventTargetBoolean) {
+
         this.alertError = alertError,
             this.eventTargetType = eventTargetType,
             this.eventTargetName = eventTargetName,
@@ -10,45 +11,20 @@ export class InputValidator {
             this.eventTargetBoolean = eventTargetBoolean
     }
 
+    /* 
+        Workflow Validation Input
+        1st -> Type to Input: if is boolean or others
+        2nd -> If this input is empty -> Error
+        3rd -> If this input value fulfil with the expresion regular -> Error
+    
+    
+    */
 
     // Inicializamos la función
-    inputValidatorFunction(eventTargetValue) {
+    inputValidatorFunction() {
 
-        console.log('1. Iniciando la función.......', this.eventTargetBoolean)
-
-
-        this.inputEmpty(this.eventTargetValue)
-
-
-    }
-
-
-    inputChecked() {
-
-    }
-
-
-
-
-    //Input is Empty?
-    inputEmpty(eventTargetValue) {
-
-        console.log('2. LEYENDO EMPTY.......', this.eventTargetBoolean)
-
-
-
-        if (eventTargetValue === '' || !this.eventTargetBoolean) {
-
-            this.alertError.nodeType != 3 ? this.alertError.remove() : null
-
-            UI.toogleInputValidator(this.eventTargetName, 'is-error')
-            UI.showAlert('El campo no puede estar vacio', this.eventTargetName, 'error')
-
-            return
-
-        }
-
-        this.alertError.nodeType != 3 ? this.alertError.remove() : null
+        console.log('1. Iniciando la función.......', this.eventTargetType)
+            // this.inputEmpty(this.eventTargetValue)
         this.inputType(this.eventTargetType)
 
     }
@@ -57,18 +33,19 @@ export class InputValidator {
 
 
 
-
-    //Para validar primero preguntamos el tipo de input que es:
+    // 1st -> Type to Input: if is boolean or others -> Error
     inputType(eventTargetType) {
 
 
-        console.log('3. LEYENDO TYPE.......', eventTargetType)
+        console.log('2. Leyendo Type.......', eventTargetType)
 
         switch (eventTargetType) {
 
             //Type: Text
             case 'checkbox':
-                this.inputCheckboxValidator(this.eventTargetBoolean)
+                console.log('2.2 Tipo Checkbox')
+                this.inputEmpty(this.eventTargetValue, eventTargetType)
+                    //this.inputCheckboxValidator(this.eventTargetBoolean)
                 break
 
             default:
@@ -76,6 +53,50 @@ export class InputValidator {
                 break
         }
     }
+
+
+
+    // 2nd -> If this input is empty -> Error
+    inputEmpty(eventTargetValue) {
+
+        console.log('3. Leyendo Type.......', this.alertError.nodeType)
+
+        //2.2 Checkbox -> If is false validation
+        if (!this.eventTargetBoolean) {
+
+            // console.log('entra aquí....', this.alertError.nodeType)
+
+            this.alertError.nodeType != 3 ? this.alertError.remove() : null
+
+            UI.toogleInputValidator(this.eventTargetName, 'is-error')
+            UI.showAlert('El campo no puede estar vacio', this.eventTargetName, 'error', this.eventTargetType)
+
+            return
+        }
+
+        // if (eventTargetValue === '') {
+        //     console.log('3. LEYENDO EMPTY.......', eventTargetValue, this.eventTargetBoolean)
+
+        //     this.alertError.nodeType != 3 ? this.alertError.remove() : null
+
+        //     UI.toogleInputValidator(this.eventTargetName, 'is-error')
+        //     UI.showAlert('El campo no puede estar vacio', this.eventTargetName, 'error')
+
+        //     return
+
+        // }
+
+        //this.alertError.nodeType === 3 ? this.alertError.remove() : null
+        // this.inputType(this.eventTargetType)
+
+    }
+
+
+
+
+
+
+
 
 
     //Si es el tipo Genérico

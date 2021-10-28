@@ -47,6 +47,49 @@
     width: 2rem;
 }
 
+.custom-control-label {
+    margin-left: 2rem;
+}
+
+.custom-control-label:before {
+    position: absolute;
+    top: .25rem;
+    left: -2rem;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+    content: "";
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #dee2e6;
+}
+
+.custom-control-label::after {
+    position: absolute;
+    top: .25rem;
+    left: -2rem;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    content: "";
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+}
+
+.custom-control-input.is-success:checked~.custom-control-label::before,
+.was-validated .custom-control-input:valid:checked~.custom-control-label::before {
+    background-color: #34ce57;
+}
+
+.custom-control-input.is-error~.custom-control-label::before,
+.was-validated .custom-control-input:invalid~.custom-control-label::before {
+    background-color: #efa2a9;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
